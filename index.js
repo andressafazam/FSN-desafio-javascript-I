@@ -37,3 +37,14 @@ function listarAlunos(){
         console.log(`Faltas: ${alunos.faltas} \n`);
     }
 }
+
+function buscarAluno(nome){
+    let busca = alunosDaEscola.filter(aluno => aluno.nome == nome);
+    if (busca.length > 0){
+        console.log(`Aluno(a) ${nome} já foi cadastrado(a) no sistema da escola!`);
+        return busca;
+    } else{ 
+        console.log(`Aluno(a) ${nome} ainda não foi cadastrado(a) no sistema da escola!`)
+        return false;
+    }
+}
