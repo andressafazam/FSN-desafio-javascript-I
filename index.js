@@ -10,6 +10,16 @@ const alunosDaEscola=[
 
 // implementação
 
+function adicionarAluno(nome){
+    alunosDaEscola.push({
+        nome: nome,
+        notas:[],
+        cursos:[],
+        faltas: 0
+    });
+    console.log(`Aluno(a) ${nome} cadastrado(a) com sucesso!`);
+}
+
 function listarAlunos(){
     let numero = 0;
     for(let alunos of alunosDaEscola){
