@@ -53,7 +53,7 @@ function buscarAluno(nome){
         console.log(`Notas: ${alunosDaEscola[numIndex].notas}`);
         if(alunosDaEscola[numIndex].cursos.length > 0){
             for(let curso of alunosDaEscola[numIndex].cursos){
-                console.log(`Curso:` + `${curso.nomeDoCurso}`);
+                console.log(`Curso: ${curso.nomeDoCurso}`);
                 console.log(`Matricula: ${curso.dataMatricula}`);
             }
         }else{
@@ -68,4 +68,19 @@ function buscarAluno(nome){
         console.log(`-----------------------------------------------------------------------------------`);
     }
     return numIndex;
+}
+
+function matricularAluno(aluno, curso){
+    let numIndex = buscarAluno(aluno.nome);
+    if (numIndex != -1){
+        alunosDaEscola[numIndex].cursos.push ({nomeDoCurso: curso, dataMatricula: new Date});
+        alunosDaEscola[numIndex].cursos.dataMatricula = new Date;
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`A matrícula do aluno(a) ${aluno.nome} no curso de ${curso} foi realizada com sucesso!`)
+        console.log(`-----------------------------------------------------------------------------------`);       
+    }else{
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Por favor fazer o cadastro do aluno antes de fazer a matrícula!`)
+        console.log(`-----------------------------------------------------------------------------------`);
+    }
 }
