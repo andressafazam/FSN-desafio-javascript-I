@@ -84,3 +84,18 @@ function matricularAluno(aluno, curso){
         console.log(`-----------------------------------------------------------------------------------`);
     }
 }
+
+function aplicarFalta(aluno){
+    let numIndex = buscarAluno(aluno.nome);
+    if(numIndex != -1 && alunosDaEscola[numIndex].cursos.length > 0){
+        alunosDaEscola[numIndex].faltas++;
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Falta adicionada com sucesso!`)
+        console.log(`${aluno.nome} possui no total ${alunosDaEscola[numIndex].faltas} falta(s) até o momento.`)
+        console.log(`-----------------------------------------------------------------------------------`);
+    }else{
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Por favor fazer a matrícula do aluno antes de adicionar faltas!`)
+        console.log(`-----------------------------------------------------------------------------------`);
+    }
+}
