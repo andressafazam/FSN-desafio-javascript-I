@@ -99,3 +99,17 @@ function aplicarFalta(aluno){
         console.log(`-----------------------------------------------------------------------------------`);
     }
 }
+
+function aplicarNota(aluno, nota){
+    let numIndex = buscarAluno(aluno.nome);
+    if(numIndex != -1 && alunosDaEscola[numIndex].cursos.length > 0){
+        alunosDaEscola[numIndex].notas.push([nota]);
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`A nota ${nota} foi adicionada ao cadastro do(a) ${aluno.nome} com sucesso!`)
+        console.log(`-----------------------------------------------------------------------------------`);
+    }else{
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Por favor fazer a matrícula do aluno antes de adicionar notas!`)
+        console.log(`-----------------------------------------------------------------------------------`);
+    }
+}
