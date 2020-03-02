@@ -113,3 +113,26 @@ function aplicarNota(aluno, nota){
         console.log(`-----------------------------------------------------------------------------------`);
     }
 }
+
+function aprovarAluno(aluno){
+    let numIndex = buscarAluno(aluno.nome);
+    if(numIndex != -1 && alunosDaEscola[numIndex].cursos.length > 0){
+        let falta = alunosDaEscola[numIndex].faltas <= 3;
+        let somaNotas = alunosDaEscola[numIndex].notas.reduce((acumula, valor)=> {return acumula + valor});
+        let media = somaNotas/alunosDaEscola[numIndex].notas.length >= 7;
+        //console.log(media);
+        if(falta && media){
+            console.log(`-----------------------------------------------------------------------------------`);
+            console.log(`Aluno ${aluno.nome} está APROVADO no curso!`)
+            console.log(`-----------------------------------------------------------------------------------`);
+        }else{
+            console.log(`-----------------------------------------------------------------------------------`);
+            console.log(`Aluno ${aluno.nome} está REPROVADO no curso!`)
+            console.log(`-----------------------------------------------------------------------------------`);
+        }
+    }else{
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Por favor fazer a matrícula do aluno em algum curso!`)
+        console.log(`-----------------------------------------------------------------------------------`);
+    }
+}
