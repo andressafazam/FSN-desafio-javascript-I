@@ -17,7 +17,9 @@ function adicionarAluno(nome){
         cursos:[],
         faltas: 0
     });
+    console.log(`-----------------------------------------------------------------------------------`);
     console.log(`Aluno(a) ${nome} cadastrado(a) com sucesso!`);
+    console.log(`-----------------------------------------------------------------------------------`);
 }
 
 function listarAlunos(){
@@ -39,12 +41,31 @@ function listarAlunos(){
 }
 
 function buscarAluno(nome){
-    let busca = alunosDaEscola.filter(aluno => aluno.nome == nome);
-    if (busca.length > 0){
-        console.log(`Aluno(a) ${nome} já foi cadastrado(a) no sistema da escola!`);
-        return busca;
-    } else{ 
-        console.log(`Aluno(a) ${nome} ainda não foi cadastrado(a) no sistema da escola!`)
-        return false;
+    let numIndex = -1;
+    alunosDaEscola.filter((alunos, index) => {
+        if(alunos.nome == nome)
+        numIndex = index;
+    });
+    if (numIndex != -1){
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Aluno(a) ${nome} já está cadastrado(a) no sistema da escola!\n`);
+        console.log(`Nome: ${alunosDaEscola[numIndex].nome}`);
+        console.log(`Notas: ${alunosDaEscola[numIndex].notas}`);
+        if(alunosDaEscola[numIndex].cursos.length > 0){
+            for(let curso of alunosDaEscola[numIndex].cursos){
+                console.log(`Curso:` + `${curso.nomeDoCurso}`);
+                console.log(`Matricula: ${curso.dataMatricula}`);
+            }
+        }else{
+            console.log(`Curso: \nMatricula:`);
+        }
+        console.log(`Faltas: ${alunosDaEscola[numIndex].faltas}`);
+        console.log(`-----------------------------------------------------------------------------------`);
+    }else{
+        console.log(`-----------------------------------------------------------------------------------`);
+        console.log(`Aluno(a) ${nome} ainda não foi cadastrado(a) no sistema da escola!`);
+        console.log(`Por favor fazer o cadastro do aluno!`);
+        console.log(`-----------------------------------------------------------------------------------`);
     }
+    return numIndex;
 }
